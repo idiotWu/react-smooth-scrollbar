@@ -90,6 +90,16 @@ ReactDOM.render(<App />, document.body);
             return <div> this is child component. </div>;
         }
     }
+
+    class App extends React.Component {
+        render(){
+            return (
+                <Scrollbar>
+                    <Child />
+                </Scrollbar>
+            );
+        }
+    }
     ```
 
 

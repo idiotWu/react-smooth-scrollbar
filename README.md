@@ -46,11 +46,13 @@ ReactDOM.render(<App />, document.body);
 
 | parameter | type | default | description |
 | :--------: | :--: | :-----: | :----------: |
-| speed | Number | 1 | scrolling speed|
-| stepLength | Number | 50 | how long each scrolling is (px/delta) |
-| easingDuration | Number | 1000 | how long will easing takes after `touchend` event |
-| easingCurve | String | cubic-bezier(0.1, 0.57, 0.1, 1) | easing timing function, either css `timing-function` or pre-defined curves [here](http://easings.net) |
-| propagation | Boolean | true | event propagation |
+| speed | Number | 1 | Scrolling speed scale.|
+| fricton | Number | 10 | Scrolling fricton, a percentage value within (1, 100) |
+| inflection | Number | 10 | When scrolling speed is lower than infleciton point, sensitivity will be scaled to 10x. |
+| sensitivity | Number | 0.1 | Wheel sensitivity, lower is accurate. |
+
+Confusing with the option field? Try editor tool [here](http://idiotwu.github.io/smooth-scrollbar/)!
+
 
 ## Get Scrollbar Instance
 

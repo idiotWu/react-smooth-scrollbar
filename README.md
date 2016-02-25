@@ -48,8 +48,6 @@ ReactDOM.render(<App />, document.body);
 | :--------: | :--: | :-----: | :----------: |
 | speed | Number | 1 | Scrolling speed scale.|
 | fricton | Number | 10 | Scrolling fricton, a percentage value within (1, 100) |
-| inflection | Number | 10 | When scrolling speed is lower than infleciton point, sensitivity will be scaled to 10x. |
-| sensitivity | Number | 0.1 | Wheel sensitivity, lower is accurate. |
 
 Confusing with the option field? Try editor tool [here](http://idiotwu.github.io/smooth-scrollbar/)!
 

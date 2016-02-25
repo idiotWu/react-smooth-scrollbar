@@ -4,9 +4,7 @@ import SmoothScrollbar from 'smooth-scrollbar';
 export default class Scrollbar extends React.Component {
     static propTypes = {
         speed: React.PropTypes.number,
-        fricton: React.PropTypes.number,
-        inflection: React.PropTypes.number,
-        sensitivity: React.PropTypes.number
+        fricton: React.PropTypes.number
     };
 
     static childContextTypes = {

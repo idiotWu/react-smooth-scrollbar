@@ -28,10 +28,7 @@ class App extends React.Component {
         return (
             <Scrollbar
                 speed={Number}
-                stepLength={Number}
-                easingDuration={Number}
-                easingCurve={String}
-                propagation={Boolean}
+                fricton={Number}
             >
                 your contents here...
             </Scrollbar>

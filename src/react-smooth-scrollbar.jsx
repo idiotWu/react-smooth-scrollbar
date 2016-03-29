@@ -29,7 +29,11 @@ export default class Scrollbar extends React.Component {
     }
 
     componentDidMount() {
-        this.scrollbar = SmoothScrollbar.init(this.refs.container, { ...this.props });
+        const { speed, friction } = this.props;
+
+        this.scrollbar = SmoothScrollbar.init(this.refs.container, {
+            speed, friction
+        });
 
         this.callbacks.forEach((cb) => {
             setTimeout(() => cb(this.scrollbar));
@@ -41,7 +45,8 @@ export default class Scrollbar extends React.Component {
     }
 
     render() {
-        const { speed, friction, children, ...others } = this.props;
+        const { children, ...others } = this.props;
+
         return (
             <section data-scrollbar ref="container" {...others}>
                 {children}

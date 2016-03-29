@@ -41,9 +41,10 @@ export default class Scrollbar extends React.Component {
     }
 
     render() {
+        const { speed, friction, children, ...others } = this.props;
         return (
-            <section data-scrollbar ref="container">
-                {this.props.children}
+            <section data-scrollbar ref="container" {...others}>
+                {children}
             </section>
         );
     }

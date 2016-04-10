@@ -29,6 +29,7 @@ class App extends React.Component {
             <Scrollbar
                 speed={Number}
                 fricton={Number}
+                ignoreEvents={Array}
             >
                 your contents here...
             </Scrollbar>

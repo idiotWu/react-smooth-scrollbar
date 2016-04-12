@@ -50,7 +50,7 @@ ReactDOM.render(<App />, document.body);
 | friction | Number | 10 | Scrolling friction, a percentage value within (1, 100). |
 | thumbMinWidth | Number | 20 | Minimal size for horizontal thumb. |
 | thumbMinHeight | Number | 20 | Minimal size for vertical thumb. |
-| ignoreEvents | Array | [] | Details [here](https://github.com/idiotWu/smooth-scrollbar/wiki/Options-Field). |
+| ignoreEvents | Array | [] | A list of events names that are ignored, regex rules are supported. Details [here](https://github.com/idiotWu/smooth-scrollbar/wiki/Options-Field). |
 
 Confusing with the option field? Try edit tool [here](http://idiotwu.github.io/smooth-scrollbar/)!
 

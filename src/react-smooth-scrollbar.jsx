@@ -32,17 +32,7 @@ export default class Scrollbar extends React.Component {
     }
 
     componentDidMount() {
-        const {
-            speed = 1,
-            friction = 10,
-            ignoreEvents = [],
-            thumbMinWidth = 20,
-            thumbMinHeight = 20
-        } = this.props;
-
-        this.scrollbar = SmoothScrollbar.init(this.refs.container, {
-            speed, friction, ignoreEvents, thumbMinWidth, thumbMinHeight
-        });
+        this.scrollbar = SmoothScrollbar.init(this.refs.container, this.props);
 
         this.callbacks.forEach((cb) => {
             setTimeout(() => cb(this.scrollbar));

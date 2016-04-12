@@ -28,7 +28,9 @@ class App extends React.Component {
         return (
             <Scrollbar
                 speed={Number}
-                fricton={Number}
+                friciton={Number}
+                thumbMinWidth={Number}
+                thumbMinHeight={Number}
                 ignoreEvents={Array}
             >
                 your contents here...

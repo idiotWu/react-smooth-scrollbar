@@ -4,7 +4,9 @@ import SmoothScrollbar from 'smooth-scrollbar';
 export default class Scrollbar extends React.Component {
     static propTypes = {
         speed: React.PropTypes.number,
-        fricton: React.PropTypes.number,
+        friction: React.PropTypes.number,
+        thumbMinWidth: React.PropTypes.number,
+        thumbMinHeight: React.PropTypes.number,
         ignoreEvents: React.PropTypes.array
     };
 
@@ -33,11 +35,13 @@ export default class Scrollbar extends React.Component {
         const {
             speed = 1,
             friction = 10,
-            ignoreEvents = []
+            ignoreEvents = [],
+            thumbMinWidth = 20,
+            thumbMinHeight = 20
         } = this.props;
 
         this.scrollbar = SmoothScrollbar.init(this.refs.container, {
-            speed, friction, ignoreEvents
+            speed, friction, ignoreEvents, thumbMinWidth, thumbMinHeight
         });
 
         this.callbacks.forEach((cb) => {

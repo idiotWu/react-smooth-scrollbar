@@ -5,8 +5,7 @@ export default class Scrollbar extends React.Component {
     static propTypes = {
         speed: React.PropTypes.number,
         friction: React.PropTypes.number,
-        thumbMinWidth: React.PropTypes.number,
-        thumbMinHeight: React.PropTypes.number,
+        thumbMinSize: React.PropTypes.number,
         continuousScrolling: React.PropTypes.bool,
         ignoreEvents: React.PropTypes.array
     };

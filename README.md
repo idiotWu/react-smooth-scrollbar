@@ -29,9 +29,9 @@ class App extends React.Component {
             <Scrollbar
                 speed={Number}
                 friciton={Number}
-                thumbMinWidth={Number}
-                thumbMinHeight={Number}
+                thumbMinSize={Number}
                 ignoreEvents={Array}
+                continuousScrolling={Boolean}
             >
                 your contents here...
             </Scrollbar>

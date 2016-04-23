@@ -1,6 +1,6 @@
 {
   "name": "react-smooth-scrollbar",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "React implementation of smooth-scrollbar",
   "main": "dist/react-smooth-scrollbar.js",
   "scripts": {

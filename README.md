@@ -30,8 +30,8 @@ class App extends React.Component {
                 speed={Number}
                 friciton={Number}
                 thumbMinSize={Number}
-                ignoreEvents={Array}
-                continuousScrolling={Boolean}
+                renderByPixels={Boolean}
+                continuousScrolling={Boolean|String}
             >
                 your contents here...
             </Scrollbar>

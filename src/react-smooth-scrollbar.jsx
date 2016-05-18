@@ -11,7 +11,11 @@ export default class Scrollbar extends React.Component {
           React.PropTypes.string,
           React.PropTypes.bool
         ]),
-
+        overscrollEffect: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.bool
+        ]),
+        overscrollEffectColor: React.PropTypes.string
     };
 
     static childContextTypes = {

@@ -1,25 +1,27 @@
 import React from 'react';
+import { PropTypes } from 'react';
 import SmoothScrollbar from 'smooth-scrollbar';
 
 export default class Scrollbar extends React.Component {
     static propTypes = {
-        speed: React.PropTypes.number,
-        friction: React.PropTypes.number,
-        thumbMinSize: React.PropTypes.number,
-        renderByPixels: React.PropTypes.bool,
-        continuousScrolling: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.bool
+        speed: PropTypes.number,
+        friction: PropTypes.number,
+        thumbMinSize: PropTypes.number,
+        renderByPixels: PropTypes.bool,
+        alwaysShowTracks: PropTypes.bool,
+        continuousScrolling: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.bool
         ]),
-        overscrollEffect: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.bool
+        overscrollEffect: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.bool
         ]),
-        overscrollEffectColor: React.PropTypes.string
+        overscrollEffectColor: PropTypes.string
     };
 
     static childContextTypes = {
-        getScrollbar: React.PropTypes.func
+        getScrollbar: PropTypes.func
     };
 
     constructor(props) {

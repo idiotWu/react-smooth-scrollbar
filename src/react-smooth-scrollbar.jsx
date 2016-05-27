@@ -5,7 +5,7 @@ import SmoothScrollbar from 'smooth-scrollbar';
 export default class Scrollbar extends React.Component {
     static propTypes = {
         speed: PropTypes.number,
-        friction: PropTypes.number,
+        damping: PropTypes.number,
         thumbMinSize: PropTypes.number,
         renderByPixels: PropTypes.bool,
         alwaysShowTracks: PropTypes.bool,

@@ -47,8 +47,7 @@ ReactDOM.render(<App />, document.body);
 | parameter | type | default | description |
 | :--------: | :--: | :-----: | :---------- |
 | speed | Number | 1 | Scrolling speed scale.|
-| friction | Number | 10 | Scrolling friction, a percentage value within (1, 100). |
-| thumbMinSize | Number | 20 | Minimal size for scrollbar thumb. |
+| damping | Number | 0.1 | Delta reduce damping, a float value between (0, 1), the lower the value is, the more smooth the scrolling will be. |
 | renderByPixels | Boolean | true | Render scrolling by integer pixels, set to `true` to improve performance. |
 | alwaysShowTracks | Boolean | false | Keep scrollbar tracks visible whether it's scrolling or not. |
 | continuousScrolling | Boolean\|String | 'auto' | Whether allow upper scrollable content to continue scrolling when current scrollbar reaches edge. **When set to 'auto', it will be enabled on nested scrollbars, and disabled on first-class scrollbars.** |

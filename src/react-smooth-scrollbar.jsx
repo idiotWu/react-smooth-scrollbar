@@ -7,6 +7,7 @@ export default class Scrollbar extends React.Component {
         speed: PropTypes.number,
         damping: PropTypes.number,
         thumbMinSize: PropTypes.number,
+        syncCallbacks: PropTypes.bool,
         renderByPixels: PropTypes.bool,
         alwaysShowTracks: PropTypes.bool,
         continuousScrolling: PropTypes.oneOfType([
@@ -17,7 +18,8 @@ export default class Scrollbar extends React.Component {
           PropTypes.string,
           PropTypes.bool
         ]),
-        overscrollEffectColor: PropTypes.string
+        overscrollEffectColor: PropTypes.string,
+        onScroll: PropTypes.func,
     };
 
     static childContextTypes = {
@@ -45,12 +47,20 @@ export default class Scrollbar extends React.Component {
         this.scrollbar = SmoothScrollbar.init(this.refs.container, this.props);
 
         this.callbacks.forEach((cb) => {
-            setTimeout(() => cb(this.scrollbar));
+            requestAnimationFrame(() => cb(this.scrollbar));
         });
+
+        this.scrollbar.addListener(::this.handleScroll);
     }
 
     componentWillUnmount() {
         this.scrollbar.destroy();
+    }
+
+    handleScroll(status) {
+        if (this.props.onScroll) {
+            this.props.onScroll(status, this.scrollbar);
+        }
     }
 
     render() {

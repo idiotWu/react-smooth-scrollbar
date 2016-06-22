@@ -1,6 +1,6 @@
 {
   "name": "react-smooth-scrollbar",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "React implementation of smooth-scrollbar",
   "main": "dist/react-smooth-scrollbar.js",
   "scripts": {
@@ -39,7 +39,7 @@
     "webpack-stream": "^3.1.0"
   },
   "dependencies": {
-    "smooth-scrollbar": "^6.2.0"
+    "smooth-scrollbar": "^6.3.0"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"

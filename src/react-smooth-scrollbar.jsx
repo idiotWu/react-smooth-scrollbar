@@ -12,18 +12,19 @@ export default class Scrollbar extends React.Component {
         alwaysShowTracks: PropTypes.bool,
         continuousScrolling: PropTypes.oneOfType([
           PropTypes.string,
-          PropTypes.bool
+          PropTypes.bool,
         ]),
         overscrollEffect: PropTypes.oneOfType([
           PropTypes.string,
-          PropTypes.bool
+          PropTypes.bool,
         ]),
         overscrollEffectColor: PropTypes.string,
         onScroll: PropTypes.func,
+        children: PropTypes.node,
     };
 
     static childContextTypes = {
-        getScrollbar: PropTypes.func
+        getScrollbar: PropTypes.func,
     };
 
     constructor(props) {
@@ -72,7 +73,21 @@ export default class Scrollbar extends React.Component {
     }
 
     render() {
-        const { children, ...others } = this.props;
+        const {
+            speed,
+            damping,
+            thumbMinSize,
+            syncCallbacks,
+            renderByPixels,
+            alwaysShowTracks,
+            continuousScrolling,
+            overscrollEffect,
+            overscrollEffectColor,
+            onScroll,
+
+            children,
+            ...others,
+        } = this.props;
 
         return (
             <section data-scrollbar ref="container" {...others}>

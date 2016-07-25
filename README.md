@@ -42,6 +42,12 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.body);
 ```
 
+Don't forget to include the stylesheet in your page:
+
+```html
+<link rel="stylesheet" href="dist/smooth-scrollbar.css">
+```
+
 ### Available Options
 
 | parameter | type | default | description |

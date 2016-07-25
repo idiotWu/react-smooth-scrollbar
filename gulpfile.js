@@ -8,7 +8,7 @@ var webpackDevConf = require('./webpack.dev.config.js'),
     webpackProdConf = require('./webpack.prod.config.js');
 
 gulp.task('build', function() {
-    return gulp.src('test/main.jsx')
+    return gulp.src('test/main.js')
         .pipe(webpack(webpackDevConf))
         .pipe(rename('main.js'))
         .pipe(gulp.dest('.tmp'))
@@ -16,7 +16,7 @@ gulp.task('build', function() {
 });
 
 gulp.task('dist', function() {
-    return gulp.src('src/react-smooth-scrollbar.jsx')
+    return gulp.src('src/react-smooth-scrollbar.js')
         .pipe(webpack(webpackProdConf))
         .pipe(uglify())
         .pipe(rename('react-smooth-scrollbar.js'))
@@ -24,7 +24,7 @@ gulp.task('dist', function() {
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['test/main.jsx', 'src/react-smooth-scrollbar.jsx'], ['build']);
+    gulp.watch(['test/main.js', 'src/react-smooth-scrollbar.js'], ['build']);
     gulp.watch('test/*.{css,html}').on('change', browserSync.reload);
 })
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Scrollbar from '../src/react-smooth-scrollbar.jsx';
+import Scrollbar from '../src/react-smooth-scrollbar.js';
 
 class Content extends React.Component {
     render() {

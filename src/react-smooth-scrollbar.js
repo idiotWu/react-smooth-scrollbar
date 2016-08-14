@@ -18,6 +18,7 @@ export default class Scrollbar extends React.Component {
           PropTypes.bool,
         ]),
         overscrollEffectColor: PropTypes.string,
+        overscrollDamping: PropTypes.number,
         onScroll: PropTypes.func,
         children: PropTypes.node,
     };
@@ -82,6 +83,7 @@ export default class Scrollbar extends React.Component {
             continuousScrolling,
             overscrollEffect,
             overscrollEffectColor,
+            overscrollDamping,
             onScroll,
 
             children,

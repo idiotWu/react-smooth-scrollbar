@@ -45,7 +45,7 @@ export default class Scrollbar extends React.Component {
     }
 
     componentDidMount() {
-        this.scrollbar = new SmoothScrollbar(this.refs.container, this.props);
+        this.scrollbar = new SmoothScrollbar(this.$container, this.props);
 
         this.callbacks.forEach((cb) => {
             requestAnimationFrame(() => cb(this.scrollbar));
@@ -91,7 +91,7 @@ export default class Scrollbar extends React.Component {
         } = this.props;
 
         return (
-            <section data-scrollbar ref="container" {...others}>
+            <section data-scrollbar ref={element => this.$container = element} {...others}>
                 <article className="scroll-content">
                     {children}
                 </article>

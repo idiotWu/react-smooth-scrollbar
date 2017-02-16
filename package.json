@@ -4,7 +4,9 @@
   "description": "React implementation of smooth-scrollbar",
   "main": "dist/react-smooth-scrollbar.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp",
+    "dist": "gulp dist",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

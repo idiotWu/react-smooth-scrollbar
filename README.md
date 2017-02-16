@@ -69,51 +69,99 @@ Don't forget to include the stylesheet in your page:
 
 1. Use `ref` in **parent component**:
 
-    ```javascript
-    class Parent extends React.Component {
-        componentDidMount() {
-            const { scrollbar } = this.refs.child;
-        }
-
-        render() {
-            return (
-                <Scrollbar ref="child">
-                    your content...
-                </Scrollbar>
-            );
-        }
-    }
-    ```
-
-2. Use `Context` in **child component**:
-
-    ```javascript
-    class Child extends React.Component {
-        static contextTypes = {
-            getScrollbar: React.PropTypes.func
-        };
-
-        componentDidMount() {
-            this.context.getScrollbar((scrollbar) => {
-                // ...
-            });
-        }
-
-        render() {
-            return <div> this is child component. </div>;
-        }
+```javascript
+class Parent extends React.Component {
+    componentDidMount() {
+        const { scrollbar } = this.refs.child;
     }
 
-    class App extends React.Component {
-        render(){
-            return (
-                <Scrollbar>
-                    <Child />
-                </Scrollbar>
-            );
-        }
+    render() {
+        return (
+            <Scrollbar ref="child">
+                your content...
+            </Scrollbar>
+        );
     }
-    ```
+}
+```
+
+2. Directly get `scrollbar` instance in a **child component**:
+
+```javascript
+// A.js
+import React from 'react';
+import { getScrollbar } from 'react-smooth-scrollbar';
+class A extends React.Component {
+    componentDidMount() {
+        this.props.getScrollbar((scrollbar) => {
+            // ...
+        });
+    }
+    render() {
+        return <div> this is child component. </div>;
+    }
+}
+export default getScrollbar()(A);
+
+// B.js
+import React from 'react';
+import B from 'A.js';
+export default class App extends React.Component {
+    render(){
+        return (
+            <div><A /></div>
+        );
+    }
+}
+
+// root.js
+import React from 'react';
+import Scrollbar from 'react-smooth-scrollbar';
+import B from 'B.js';
+class Root extends React.Component {
+    render() {
+        return (
+            <Scrollbar>
+                <B />
+            </Scrollbar>
+        );
+    }
+}
+```
+
+Or you can use decorators in a more simple way.
+
+```javascript
+// A.js
+import React from 'react';
+import { getScrollbar } from 'react-smooth-scrollbar';
+@getScrollbar()
+export default class A extends React.Component {
+    componentDidMount() {
+        this.props.getScrollbar((scrollbar) => {
+            // ...
+        });
+    }
+    render() {
+        return <div> this is child component. </div>;
+    }
+}
+
+// Also, if you want to modify the prop name:
+
+// A.js
+@getScrollbar(getScrollbar => ({customName: getScrollbar}))
+export default class A extends React.Component {
+    componentDidMount() {
+        this.props.customName((scrollbar) => {
+            // ...
+        });
+    }
+    render() {
+        return <div> this is child component. </div>;
+    }
+}
+```
 
 
 ## APIs

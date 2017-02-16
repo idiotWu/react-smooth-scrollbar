@@ -72,12 +72,12 @@ Don't forget to include the stylesheet in your page:
     ```javascript
     class Parent extends React.Component {
         componentDidMount() {
-            const { scrollbar } = this.refs.child;
+            const { scrollbar } = this.$container;
         }
 
         render() {
             return (
-                <Scrollbar ref="child">
+                <Scrollbar ref={scrollbar => this.$container = scrollbar}>
                     your content...
                 </Scrollbar>
             );

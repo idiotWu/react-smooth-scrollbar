@@ -74,6 +74,7 @@ export default class Scrollbar extends React.Component {
 
     render() {
         const {
+            /*
             speed,
             damping,
             thumbMinSize,
@@ -85,6 +86,7 @@ export default class Scrollbar extends React.Component {
             overscrollEffectColor,
             overscrollDamping,
             onScroll,
+            */
 
             children,
             ...others,

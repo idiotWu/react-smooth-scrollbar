@@ -106,3 +106,29 @@ export default class Scrollbar extends React.Component {
         );
     }
 }
+
+const getScrollbar = (mapScrollbarToProps = getScrollbar => ({ getScrollbar })) => WrappedComponent => {
+    const wrappedComponentName = WrappedComponent.displayName
+        || WrappedComponent.name
+        || 'Component';
+    const displayName = `getScrollbarFor${wrappedComponentName}`;
+
+    return class extends React.Component {
+        static displayName = displayName
+
+        static contextTypes = {
+            getScrollbar: PropTypes.func
+        };
+
+        render() {
+            return (
+                <WrappedComponent
+                    {...this.props}
+                    {...mapScrollbarToProps(this.context.getScrollbar)}
+                />
+            );
+        }
+    };
+};
+
+export { getScrollbar };

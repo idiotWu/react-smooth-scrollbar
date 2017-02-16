@@ -31,6 +31,7 @@ module.exports = {
                 presets: ['es2015', 'stage-0', 'react'],
                 plugins: [
                     'add-module-exports',
+                    'transform-decorators-legacy'
                 ]
             }
         }]

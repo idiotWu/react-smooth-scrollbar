@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Scrollbar from '../src/react-smooth-scrollbar.js';
+import Scrollbar, { getScrollbar } from '../src/react-smooth-scrollbar.js';
 
 class Content extends React.Component {
     render() {
@@ -13,11 +13,8 @@ class Content extends React.Component {
     }
 }
 
+@getScrollbar()
 class InfiniteScroll extends React.Component {
-    static contextTypes = {
-        getScrollbar: React.PropTypes.func
-    };
-
     constructor(...args) {
         super(...args);
 
@@ -28,13 +25,13 @@ class InfiniteScroll extends React.Component {
     }
 
     componentDidMount() {
-        this.context.getScrollbar((scrollbar) => {
+        this.props.getScrollbar((scrollbar) => {
             scrollbar.infiniteScroll(::this.loadData);
         });
     }
 
     componentDidUpdate() {
-        this.context.getScrollbar((scrollbar) => {
+        this.props.getScrollbar((scrollbar) => {
             scrollbar.update();
         });
     }

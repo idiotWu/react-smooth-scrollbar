@@ -74,6 +74,7 @@ export default class Scrollbar extends React.Component {
 
     render() {
         const {
+            /*
             speed,
             damping,
             thumbMinSize,
@@ -85,6 +86,7 @@ export default class Scrollbar extends React.Component {
             overscrollEffectColor,
             overscrollDamping,
             onScroll,
+            */
 
             children,
             ...others,
@@ -96,12 +98,12 @@ export default class Scrollbar extends React.Component {
                     {children}
                 </article>
                 <aside className="scrollbar-track scrollbar-track-x">
-                    <div className="scrollbar-thumb scrollbar-thumb-x"></div>
+                    <div className="scrollbar-thumb scrollbar-thumb-x" />
                 </aside>
                 <aside className="scrollbar-track scrollbar-track-y">
-                    <div className="scrollbar-thumb scrollbar-thumb-y"></div>
+                    <div className="scrollbar-thumb scrollbar-thumb-y" />
                 </aside>
-                <canvas className="overscroll-glow"></canvas>
+                <canvas className="overscroll-glow" />
             </section>
         );
     }

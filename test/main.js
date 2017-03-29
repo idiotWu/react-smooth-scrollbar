@@ -2,16 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Scrollbar from '../src/react-smooth-scrollbar.js';
 
-class Content extends React.Component {
-    render() {
-        return (
-            <section>
-                <img src="your_diary.jpg" />
-                {this.props.children}
-            </section>
-        );
-    }
-}
+const Content = ({children}) => (
+    <section>
+        <img src="your_diary.jpg" />
+        {children}
+    </section>
+);
 
 class InfiniteScroll extends React.Component {
     static contextTypes = {
@@ -70,7 +66,7 @@ class InfiniteScroll extends React.Component {
 
 ReactDOM.render(
     <Scrollbar>
-        <InfiniteScroll></InfiniteScroll>
+        <InfiniteScroll />
     </Scrollbar>,
     document.getElementById('app')
 );

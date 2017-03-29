@@ -77,7 +77,7 @@ Don't forget to include the stylesheet in your page:
 
         render() {
             return (
-                <Scrollbar ref={scrollbar => this.$container = scrollbar}>
+                <Scrollbar ref={c => this.$container = c}>
                     your content...
                 </Scrollbar>
             );

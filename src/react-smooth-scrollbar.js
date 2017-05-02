@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import SmoothScrollbar from 'smooth-scrollbar';
 
 export default class Scrollbar extends React.Component {

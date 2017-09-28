@@ -23,6 +23,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Scrollbar from 'react-smooth-scrollbar';
 
+// Don't forget the stylesheet
+import 'smooth-scrollbar/dist/smooth-scrollbar.css';
+
 class App extends React.Component {
     render() {
         return (
@@ -40,12 +43,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.body);
-```
-
-Don't forget to include the stylesheet in your page:
-
-```html
-<link rel="stylesheet" href="dist/smooth-scrollbar.css">
 ```
 
 ### Available Options

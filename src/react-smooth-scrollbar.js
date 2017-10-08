@@ -4,22 +4,14 @@ import SmoothScrollbar from 'smooth-scrollbar';
 
 export default class Scrollbar extends React.Component {
     static propTypes = {
-        speed: PropTypes.number,
         damping: PropTypes.number,
         thumbMinSize: PropTypes.number,
         syncCallbacks: PropTypes.bool,
         renderByPixels: PropTypes.bool,
         alwaysShowTracks: PropTypes.bool,
-        continuousScrolling: PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.bool,
-        ]),
-        overscrollEffect: PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.bool,
-        ]),
-        overscrollEffectColor: PropTypes.string,
-        overscrollDamping: PropTypes.number,
+        continuousScrolling: PropTypes.bool,
+        wheelEventTarget: PropTypes.element,
+        plugins: PropTypes.object,
         onScroll: PropTypes.func,
         children: PropTypes.node,
     };
@@ -46,13 +38,13 @@ export default class Scrollbar extends React.Component {
     }
 
     componentDidMount() {
-        this.scrollbar = new SmoothScrollbar(this.$container, this.props);
+        this.scrollbar = SmoothScrollbar.init(this.$container, this.props);
 
         this.callbacks.forEach((cb) => {
             requestAnimationFrame(() => cb(this.scrollbar));
         });
 
-        this.scrollbar.addListener(::this.handleScroll);
+        this.scrollbar.addListener(this.handleScroll.bind(this));
     }
 
     componentWillUnmount() {
@@ -75,34 +67,23 @@ export default class Scrollbar extends React.Component {
 
     render() {
         const {
-            speed,
             damping,
             thumbMinSize,
             syncCallbacks,
             renderByPixels,
             alwaysShowTracks,
             continuousScrolling,
-            overscrollEffect,
-            overscrollEffectColor,
-            overscrollDamping,
-            onScroll,
+            wheelEventTarget,
+            plugins,
 
+            onScroll,
             children,
             ...others,
         } = this.props;
 
         return (
             <section data-scrollbar ref={element => this.$container = element} {...others}>
-                <article className="scroll-content">
-                    {children}
-                </article>
-                <aside className="scrollbar-track scrollbar-track-x">
-                    <div className="scrollbar-thumb scrollbar-thumb-x"></div>
-                </aside>
-                <aside className="scrollbar-track scrollbar-track-y">
-                    <div className="scrollbar-thumb scrollbar-thumb-y"></div>
-                </aside>
-                <canvas className="overscroll-glow"></canvas>
+                {children.length > 1 ? <div>{children}</div> : children}
             </section>
         );
     }

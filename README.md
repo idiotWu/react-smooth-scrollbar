@@ -9,7 +9,7 @@ React 0.14+
 ## Install
 
 ```
-npm install react-smooth-scrollbar --save
+npm install react-smooth-scrollbar smooth-scrollbar --save
 ```
 
 ## Demo
@@ -18,23 +18,24 @@ npm install react-smooth-scrollbar --save
 
 ## Usage
 
-```javascript
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Scrollbar from 'react-smooth-scrollbar';
-
-// Don't forget the stylesheet
-import 'smooth-scrollbar/dist/smooth-scrollbar.css';
 
 class App extends React.Component {
     render() {
         return (
             <Scrollbar
-                speed={Number}
-                friciton={Number}
-                thumbMinSize={Number}
-                renderByPixels={Boolean}
-                continuousScrolling={Boolean|String}
+                damping={number},
+                thumbMinSize={number},
+                syncCallbacks={boolean},
+                renderByPixels={boolean},
+                alwaysShowTracks={boolean},
+                continuousScrolling={boolean},
+                wheelEventTarget={element},
+                plugins={object},
+                onScroll={func},
             >
                 your contents here...
             </Scrollbar>
@@ -49,18 +50,36 @@ ReactDOM.render(<App />, document.body);
 
 | parameter | type | default | description |
 | :--------: | :--: | :-----: | :---------- |
-| speed | Number | 1 | Scrolling speed scale.|
-| damping | Number | 0.1 | Delta reduce damping, a float value between (0, 1), the lower the value is, the more smooth the scrolling will be. |
-| onScroll | Function | | Pipe to `scrollbar#addListener`, invoked with two params: `(status, scrollbar) => {}`. |
-| syncCallbacks | Boolean | false | Execute listeners in synchronous or asynchronous. |
-| renderByPixels | Boolean | true | Render scrolling by integer pixels, set to `true` to improve performance. |
-| alwaysShowTracks | Boolean | false | Keep scrollbar tracks visible whether it's scrolling or not. |
-| continuousScrolling | Boolean\|String | 'auto' | Whether allow upper scrollable content to continue scrolling when current scrollbar reaches edge. **When set to 'auto', it will be enabled on nested scrollbars, and disabled on first-class scrollbars.** |
-| overscrollEffect | Boolean\|String | false | Experimental overscroll effect, `'bounce'` for iOS style effect and `'glow'` for Android style effect. **Be careful when you enable this feature!** |
-| overscrollEffectColor | String | '#87ceeb' | Canvas paint color with 'glow' effect. |
-| overscrollDamping | Number | 0.2 | The same as `damping`, but for overscrolling. |
+| damping | `number` | `0.1` | Momentum reduction damping factor, a float value between `(0, 1)`. The lower the value is, the more smooth the scrolling will be (also the more paint frames). |
+| thumbMinSize | `number` | `20` | Minimal size for scrollbar thumbs. |
+| renderByPixels | `boolean` | `true` | Render every frame in integer pixel values, set to `true` to improve scrolling performance. |
+| alwaysShowTracks | `boolean` | `false` | Keep scrollbar tracks visible. |
+| continuousScrolling | `boolean` | `true` | Set to `true` to allow outer scrollbars continue scrolling when current scrollbar reaches edge. |
+| wheelEventTarget | `EventTarget` | `null` | Element to be used as a listener for mouse wheel scroll events. By default, the container element is used. This option will be useful for dealing with fixed elements.  |
+| plugins | `object` | `{}` | Options for plugins, see [Plugin System](plugin.md). |
+
 
 **Confusing with the option field? Try edit tool [here](http://idiotwu.github.io/smooth-scrollbar/)!**
+
+## Using Scrollbar Plugins
+
+```js
+import { Component } from 'react';
+import PropTypes from 'prop-types';
+import SmoothScrollbar from 'smooth-scrollbar';
+import OverscrollPlugin from 'smooth-scrollbar/plugins/overflow';
+import Scrollbar from 'react-smooth-scrollbar';
+
+SmoothScrollbar.use(OverscrollPlugin);
+
+class App2 extends Component {
+    render() {
+        return (
+            <Scrollbar> ... </Scrollbar>
+        );
+    }
+}
+```
 
 ## Get Scrollbar Instance
 
@@ -115,7 +134,7 @@ ReactDOM.render(<App />, document.body);
 
 ## APIs
 
-[Documents](https://github.com/idiotWu/smooth-scrollbar#apis)
+[Documents](https://github.com/idiotWu/smooth-scrollbar/docs)
 
 ## License
 

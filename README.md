@@ -56,7 +56,7 @@ ReactDOM.render(<App />, document.body);
 | alwaysShowTracks | `boolean` | `false` | Keep scrollbar tracks visible. |
 | continuousScrolling | `boolean` | `true` | Set to `true` to allow outer scrollbars continue scrolling when current scrollbar reaches edge. |
 | wheelEventTarget | `EventTarget` | `null` | Element to be used as a listener for mouse wheel scroll events. By default, the container element is used. This option will be useful for dealing with fixed elements.  |
-| plugins | `object` | `{}` | Options for plugins, see [Plugin System](plugin.md). |
+| plugins | `object` | `{}` | Options for plugins, see [Plugin System](https://github.com/idiotWu/smooth-scrollbar/blob/master/docs/plugin.md). |
 
 
 **Confusing with the option field? Try edit tool [here](http://idiotwu.github.io/smooth-scrollbar/)!**

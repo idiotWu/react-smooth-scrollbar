@@ -140,3 +140,4 @@ class App2 extends Component {
 
 MIT.
 
+[![Sponsor](https://app.codesponsor.io/embed/haJ2RqCqwBLZtPKnMNBYgn4M/idiotWu/react-smooth-scrollbar.svg)](https://app.codesponsor.io/link/haJ2RqCqwBLZtPKnMNBYgn4M/idiotWu/react-smooth-scrollbar)

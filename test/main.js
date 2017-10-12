@@ -1,33 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import Scrollbar from '../src/react-smooth-scrollbar.js';
 
-class Content extends React.Component {
-    static contextTypes = {
-        getScrollbar: PropTypes.func
+class App extends React.Component {
+    state = {
+        damping: 0.1,
     };
 
-    componentDidMount() {
-        this.context.getScrollbar((scrollbar) => {
-            console.log(scrollbar);
+    randomDamping() {
+        const nextDamping = Math.random() * 0.5 + 0.1;
+        console.log('set damping:', nextDamping);
+
+        this.setState({
+            damping: nextDamping,
         });
+
+        setTimeout(this.randomDamping.bind(this), 3000);
     }
 
-    componentDidUpdate() {
-        this.context.getScrollbar((scrollbar) => {
-            scrollbar.update();
-        });
+    componentDidMount() {
+        this.scrollbar = this.$container.scrollbar;
+
+        this.randomDamping();
     }
 
     render() {
-        return (<img src="your_diary.jpg" />);
+        return (
+            <Scrollbar ref={c => this.$container = c} damping={this.state.damping}>
+                <img src="your_diary.jpg" />
+            </Scrollbar>
+        );
     }
 }
 
 ReactDOM.render(
-    <Scrollbar>
-        <Content></Content>
-    </Scrollbar>,
+    <App />,
     document.getElementById('app')
 );

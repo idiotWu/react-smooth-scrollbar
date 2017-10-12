@@ -48,11 +48,13 @@ export default class Scrollbar extends React.Component {
     }
 
     componentWillUnmount() {
-        this.scrollbar.destroy(true);
+        this.scrollbar.destroy();
     }
 
     componentWillReceiveProps(nextProps) {
-        this.scrollbar.setOptions(nextProps);
+        Object.keys(nextProps).forEach((key) => {
+            this.scrollbar.options[key] = nextProps[key];
+        });
     }
 
     componentDidUpdate() {

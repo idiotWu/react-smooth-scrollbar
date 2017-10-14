@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Scrollbar from '../src/react-smooth-scrollbar.js';
+import SmoothScrollbar from 'smooth-scrollbar';
+import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
+
+SmoothScrollbar.use(OverscrollPlugin);
 
 class App extends React.Component {
     state = {
@@ -26,7 +30,13 @@ class App extends React.Component {
 
     render() {
         return (
-            <Scrollbar ref={c => this.$container = c} damping={this.state.damping}>
+            <Scrollbar
+                ref={c => this.$container = c}
+                damping={this.state.damping}
+                plugins={{
+                    overscroll: { damping: this.state.damping }
+                }}
+            >
                 <img src="your_diary.jpg" />
             </Scrollbar>
         );

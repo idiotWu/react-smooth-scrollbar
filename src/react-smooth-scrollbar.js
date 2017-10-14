@@ -53,7 +53,17 @@ export default class Scrollbar extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         Object.keys(nextProps).forEach((key) => {
-            this.scrollbar.options[key] = nextProps[key];
+            if (!key in this.scrollbar.options) {
+                return;
+            }
+
+            if (key === 'plugins') {
+                Object.keys(nextProps.plugins).forEach((pluginName) => {
+                    this.scrollbar.updatePluginOptions(pluginName, nextProps.plugins[pluginName]);
+                });
+            } else {
+                this.scrollbar.options[key] = nextProps[key];
+            }
         });
     }
 

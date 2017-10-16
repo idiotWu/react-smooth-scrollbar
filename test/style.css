@@ -12,8 +12,7 @@ main {
   margin: 0 auto;
 }
 
-[data-scrollbar] img,
-[data-scrollbar] .scroll-content {
+[data-scrollbar] img {
   display: block;
   width: 1920px;
 }

@@ -95,7 +95,7 @@ export default class Scrollbar extends React.Component {
 
         return (
             <section data-scrollbar ref={element => this.$container = element} {...others}>
-                {children.length > 1 ? <div>{children}</div> : children}
+                <div>{children}</div>
             </section>
         );
     }

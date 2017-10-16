@@ -9,15 +9,18 @@ SmoothScrollbar.use(OverscrollPlugin);
 class App extends React.Component {
     state = {
         damping: 0.1,
+        count: 3,
     };
 
     randomDamping() {
-        const nextDamping = Math.random() * 0.5 + 0.1;
-        console.log('set damping:', nextDamping);
+        const nextState = {
+            damping: Math.random() * 0.5 + 0.1,
+            count: Math.random() * 10 | 0,
+        };
 
-        this.setState({
-            damping: nextDamping,
-        });
+        console.log(nextState);
+
+        this.setState(nextState);
 
         setTimeout(this.randomDamping.bind(this), 3000);
     }
@@ -26,6 +29,21 @@ class App extends React.Component {
         this.scrollbar = this.$container.scrollbar;
 
         this.randomDamping();
+    }
+
+    _randomItem() {
+        const res = [];
+
+        for (let i = 0; i < this.state.count; i++) {
+            res.push(<div key={i}>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>);
+        }
+
+        return res;
     }
 
     render() {
@@ -38,6 +56,7 @@ class App extends React.Component {
                 }}
             >
                 <img src="your_diary.jpg" />
+                {this._randomItem()}
             </Scrollbar>
         );
     }

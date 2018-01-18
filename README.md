@@ -134,7 +134,7 @@ class App2 extends Component {
 
 ## APIs
 
-[Documents](https://github.com/idiotWu/smooth-scrollbar/docs)
+[Documents](https://github.com/idiotWu/smooth-scrollbar/tree/develop/docs)
 
 ## License
 

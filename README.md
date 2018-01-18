@@ -67,7 +67,7 @@ ReactDOM.render(<App />, document.body);
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import SmoothScrollbar from 'smooth-scrollbar';
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overflow';
+import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 import Scrollbar from 'react-smooth-scrollbar';
 
 SmoothScrollbar.use(OverscrollPlugin);

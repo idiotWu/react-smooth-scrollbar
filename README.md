@@ -27,15 +27,15 @@ class App extends React.Component {
     render() {
         return (
             <Scrollbar
-                damping={number},
-                thumbMinSize={number},
-                syncCallbacks={boolean},
-                renderByPixels={boolean},
-                alwaysShowTracks={boolean},
-                continuousScrolling={boolean},
-                wheelEventTarget={element},
-                plugins={object},
-                onScroll={func},
+                damping={number}
+                thumbMinSize={number}
+                syncCallbacks={boolean}
+                renderByPixels={boolean}
+                alwaysShowTracks={boolean}
+                continuousScrolling={boolean}
+                wheelEventTarget={element}
+                plugins={object}
+                onScroll={func}
             >
                 your contents here...
             </Scrollbar>

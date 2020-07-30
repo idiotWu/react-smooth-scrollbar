@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SmoothScrollbar from 'smooth-scrollbar';
 
+export const ScrollbarContext = React.createContext(null);
+
 export default class Scrollbar extends React.Component {
     static propTypes = {
         damping: PropTypes.number,
@@ -14,11 +16,7 @@ export default class Scrollbar extends React.Component {
         plugins: PropTypes.object,
         onScroll: PropTypes.func,
         children: PropTypes.node,
-    };
-
-    static childContextTypes = {
-        getScrollbar: PropTypes.func,
-    };
+    }
 
     constructor(props) {
         super(props);
@@ -26,16 +24,13 @@ export default class Scrollbar extends React.Component {
         this.callbacks = [];
     }
 
-    getChildContext() {
-        return {
-            getScrollbar: (cb) => {
-                if (typeof cb !== 'function') return;
 
-                if (this.scrollbar) setTimeout(() => cb(this.scrollbar));
-                else this.callbacks.push(cb);
-            }
-        };
-    }
+		getScrollbar(cb) {
+				if (typeof cb !== 'function') return;
+
+				if (this.scrollbar) setTimeout(() => cb(this.scrollbar));
+				else this.callbacks.push(cb);
+		}
 
     componentDidMount() {
         this.scrollbar = SmoothScrollbar.init(this.$container, this.props);
@@ -92,13 +87,15 @@ export default class Scrollbar extends React.Component {
 
             onScroll,
             children,
-            ...others,
+            ...others
         } = this.props;
 
         return (
-            <section data-scrollbar ref={element => this.$container = element} {...others}>
-                <div>{children}</div>
-            </section>
+						<ScrollbarContext.Provider value={{ getScrollbar: this.getScrollbar }}>
+								<section data-scrollbar ref={element => this.$container = element} {...others}>
+										{children}
+								</section>
+						</ScrollbarContext.Provider>
         );
     }
 }
